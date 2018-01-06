@@ -1,0 +1,49 @@
+.container {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto auto;
+    grid-auto-flow: dense;
+    
+}
+
+.header {
+    grid-column: 1 / -1;
+    text-align: center;
+    background-color: lightblue;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.sidebar {
+    grid-column: 1 / 2;
+    background-color: pink;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.content {
+    grid-column: 2 / -1;
+    background-color: lightgoldenrodyellow;
+    padding-left: 1em;
+    padding-block-end: 2em;
+}
+
+.footer {
+    grid-column: 1 / -1;
+    text-align: center;
+    background-color: lightgreen;
+    font-family: 'Pacifico', cursive;
+
+}
+
+.grey {
+    color: grey; 
+}
+
+.fancy {
+    font-family: 'Permanent Marker', cursive;
+}
+
+h3 {
+    font-family: 'Roboto', sans-serif;
+}

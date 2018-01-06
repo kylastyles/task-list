@@ -1,9 +1,10 @@
 from flask import Flask, request, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
+import random
 
 app=Flask(__name__)
 app.config['DEBUG'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://get-it-done:admin@localhost:8889/get-it-done'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://get-it-done:***@localhost:8889/get-it-done'
 app.config['SQLALCHEMY_ECHO'] = True
 
 db = SQLAlchemy(app)
@@ -29,8 +30,14 @@ def index():
 
     tasks = Task.query.filter_by(completed=False).all()
     completed_tasks = Task.query.filter_by(completed=True).all()
+    
+    encouragement = ["Congratulations on staying organized!", "You Can Do It!", 
+    "You've got this!", "Where there's a will, there's a way."]
+    num = random.randint(0,3)
+    message = encouragement[num]
+
     return render_template('todos.html',title='Get It Done!', tasks=tasks, 
-    completed_tasks=completed_tasks)
+    completed_tasks=completed_tasks, message=message)
 
 @app.route('/delete-task', methods=['POST'])
 def delete_task():
@@ -41,6 +48,10 @@ def delete_task():
     db.session.commit()
 
     return redirect('/')
+
+# @app.route('/')
+# def encourage():
+#     encouragement = ["Congratulations on staying organized!", "You Can Do It!", "You've got this!", "Where there's a will, there's a way."]
 
 
 if __name__ == "__main__":
