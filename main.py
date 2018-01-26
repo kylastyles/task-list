@@ -1,4 +1,4 @@
-<------------------------------------ SETUP ------------------------------------------->
+# <------------------------------------ SETUP ------------------------------------------->
 from flask import Flask, request, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
 import random
@@ -10,7 +10,7 @@ app.config['SQLALCHEMY_ECHO'] = True
 
 db = SQLAlchemy(app)
 
-<---------------------------------- CLASSES ----------------------------------------->
+# <---------------------------------- CLASSES ----------------------------------------->
 class Task(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
@@ -21,7 +21,7 @@ class Task(db.Model):
         self.name = name
         self.completed = False
 
-<------------------------------------- ROUTES --------------------------------------->
+# <------------------------------------- ROUTES --------------------------------------->
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
